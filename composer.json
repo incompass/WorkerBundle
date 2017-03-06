@@ -1,0 +1,30 @@
+{
+  "name": "incompass/worker-bundle",
+  "type": "symfony-bundle",
+  "description": "Simple, efficient, dispatched jobs for symfony with doctrine",
+  "keywords": ["doctrine", "timestamp"],
+  "homepage": "http://github.com/incompass/WorkerBundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Joe Mizzi",
+      "email": "joe@casechek.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0"
+  },
+  "require-dev": {
+    "symfony/framework-bundle": "~2.8|~3.0",
+    "phpunit/phpunit": "^4.2|^5.0",
+    "doctrine/doctrine-bundle": "*",
+    "doctrine/orm": "*",
+    "symfony/serializer": "^3.2",
+    "symfony/process": "~2.8|~3.0",
+    "incompass/timestampable-bundle": "~1.0",
+    "mockery/mockery": "^0.9.9"
+  },
+  "autoload": {
+    "psr-4": { "Incompass\\WorkerBundle\\": "" }
+  }
+}

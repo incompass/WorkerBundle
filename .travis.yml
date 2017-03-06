@@ -1,0 +1,30 @@
+language: php
+php:
+- 5.6
+- 7.0
+- 7.1
+- hhvm
+sudo: false
+cache:
+  directories:
+  - "$HOME/.composer/cache/files"
+matrix:
+  fast_finish: true
+  include:
+  - php: 5.6
+    env: SYMFONY_VERSION='2.8'
+  - php: 7.0
+    env: SYMFONY_VERSION='2.8'
+  - php: 7.1
+    env: SYMFONY_VERSION='2.8'
+before_script:
+- if [[ "$TRAVIS_PHP_VERSION" != "hhvm" ]]; then echo "memory_limit = -1" >> ~/.phpenv/versions/$(phpenv
+  version-name)/etc/conf.d/travis.ini; fi
+- if [ "$SYMFONY_VERSION" != "" ]; then composer require --dev --no-update symfony/symfony=$SYMFONY_VERSION;
+  fi
+- composer update ${COMPOSER_FLAGS} --no-interaction
+script:
+- vendor/bin/phpunit --coverage-clover clover
+notifications:
+  slack:
+    secure: fCVB0u3SdhawaYzB/TtIvZnKjSYRREMd85l5l3CiWQh++NRfxrESwi+Aot8/deb7mABXi5tpkioDOm5DmvTnCpUJffJ1SuIGhqaRITSYaBxhNL7TSGpwMwJ+760trTD4Gwet4zkj8LOV9NY7KuqcjgcdMr8qkv+rlMGNhkj5k37h46QjFbRzOCNSQ7UnmzZ9QX/Xz78XYYRaSJePS+o1pqBzdZqlZjm1H0SPwE0o9Y8QsCABC+P9x/vkPSPAZIKUkN+Oo9dLpNs6wdbbtLGwSI3pnVS7ejVjG/epjSj0maSCKR5rCqc+aS+pWkhh21uRsv34Dip7kQPJF9NqRhYgc+rg77gtVbsSbtUTOyswSI54Ri2BVSSpm7h1bNB/exo2qrcaO8XyTfux40f2Yl7VS+cWPa+NKRzwMHL7Jx78EOYhYVJ1+uhBVRpPBUaBn8+tNnDJOZ8unuC/uL7khvb2Bs/LT29/JI6MbcYwlFdQ9YIipFoJrn8jPs6jululEyDl99FvGr94hMuPEslOy6WFVs8xz3isPR0t8owZ2pctYgQBJe416bFsr59kR1brm7YL4b2uR9ly7Pg2juY/NzQH2EF8LDghyZdMewYB18GOC6z8bkVxjlmLy0MnbTb1CL0yoXu9un5PpawaiU8RQSLHgL1dZKw/rWEgdjn38SRNm8A=

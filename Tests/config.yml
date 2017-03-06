@@ -1,0 +1,23 @@
+framework:
+    secret: secret
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver: pdo_sqlite
+                path: %kernel.root_dir%/../var/database.sqlite
+    orm:
+        entity_managers:
+            default:
+                connection: default
+                mappings:
+                    WorkerBundle:
+                        type: annotation
+                    TimestampableBundle:
+                        type: annotation
