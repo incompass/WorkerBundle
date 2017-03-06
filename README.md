@@ -1,36 +1,22 @@
-[![Build Status](https://travis-ci.org/incompass/TimestampableBundle.svg?branch=master)](https://travis-ci.org/incompass/TimestampableBundle)
+[![Build Status](https://travis-ci.org/incompass/WorkerBundle.svg?branch=master)](https://travis-ci.org/incompass/WorkerBundle)
 
-TimestampableBundle
+WorkerBundle
 ===================
 
-This bundle allows you to simply add ```use Timestampable``` 
-to a doctrine entity class to have it automatically add 
-created_at and updated_at fields and to have them updated on
-insert and update.
+This bundle provides jobs and a worker command that are based around the Symfony event dispatcher.
 
 Installation
 ------------
 
 ### Composer
 ```
-composer require incompass-timestampablebundle
+composer require incompass-workerbundle
 ```
 
 Usage
 -----
 
-Add the Timestampable trait to your doctrine entities.
-
-```
-use Timestampable
-```
-
-Update your database schema
-```
-php bin/console doctrine:schema:update --force
-```
-
-All entities will now be saved with created_at and updated_at fields populated.
+Coming soon.
 
 Contributors
 ------------
