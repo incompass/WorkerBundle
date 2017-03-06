@@ -2,7 +2,6 @@
 
 namespace Incompass\WorkerBundle\Tests\Core;
 
-use Incompass\WorkerBundle\Core\JobDispatcher;
 use Incompass\WorkerBundle\Entity\Job;
 use Incompass\WorkerBundle\Event\JobEvent;
 use Incompass\WorkerBundle\Tests\Util\EntityManagerAwareTestCase;

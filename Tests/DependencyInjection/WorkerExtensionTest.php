@@ -3,16 +3,12 @@
 namespace Incompass\WorkerBundle\Tests;
 
 use Doctrine\ORM\EntityManager;
-use Incompass\WorkerBundle\Command\Job\CreateCommand;
-use Incompass\WorkerBundle\Command\Job\DeleteCommand;
 use Incompass\WorkerBundle\Command\Job\ListCommand;
 use Incompass\WorkerBundle\Command\Job\MessagesCommand;
 use Incompass\WorkerBundle\Command\Job\RunCommand as JobRunCommand;
-use Incompass\WorkerBundle\Command\Job\UpdateCommand;
 use Incompass\WorkerBundle\Command\RunCommand;
 use Incompass\WorkerBundle\Core\JobDispatcher;
 use Incompass\WorkerBundle\DependencyInjection\WorkerExtension;
-use Incompass\WorkerBundle\Tests\Command\Job\ListCommandTest;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

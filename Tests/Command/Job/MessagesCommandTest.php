@@ -7,8 +7,6 @@ use Incompass\WorkerBundle\Entity\Job;
 use Incompass\WorkerBundle\Entity\Message;
 use Incompass\WorkerBundle\Event\JobEvent;
 use Incompass\WorkerBundle\Tests\Util\CommandTestCase;
-use Symfony\Component\Console\Input\StringInput;
-use Symfony\Component\Console\Output\NullOutput;
 
 /**
  * Class MessagesCommandTest
