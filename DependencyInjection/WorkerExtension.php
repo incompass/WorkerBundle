@@ -11,7 +11,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 /**
  * Class WorkerExtension
@@ -27,28 +26,28 @@ class WorkerExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $this->setCommandDefinition($container, WorkerRunCommand::class);
+        $this->setCommandDefinition($container, WorkerRunCommand::class, 'worker.run_command');
         $this->setCommandDefinition(
             $container,
             RunCommand::class,
-            'job',
+            'worker.job.run_command',
             [new Reference('event_dispatcher')]
         );
-        $this->setCommandDefinition($container, ListCommand::class, 'job');
-        $this->setCommandDefinition($container, MessagesCommand::class, 'job');
+        $this->setCommandDefinition($container, ListCommand::class, 'worker.job.list_command');
+        $this->setCommandDefinition($container, MessagesCommand::class, 'worker.job.messages_command');
         $this->addJobDispatcherService($container);
     }
 
     /**
      * @param ContainerBuilder $container
      * @param $commandClass
-     * @param null $prefix
+     * @param $name
      * @param array $additionalArguments
      */
     private function setCommandDefinition(
         ContainerBuilder $container,
         $commandClass,
-        $prefix = null,
+        $name,
         array $additionalArguments = []
     ) {
         $definition = new Definition($commandClass);
@@ -60,11 +59,6 @@ class WorkerExtension extends Extension
             )
         );
 
-        $reflection = new \ReflectionClass($commandClass);
-        $converter = new CamelCaseToSnakeCaseNameConverter();
-        $name = 'worker.'.($prefix ? ($prefix.'.') : '').$converter->normalize(
-                $reflection->getShortName()
-            );
         $container->setDefinition($name, $definition);
     }
 
