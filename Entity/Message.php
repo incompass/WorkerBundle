@@ -44,7 +44,7 @@ class Message
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -52,7 +52,7 @@ class Message
     /**
      * @return string
      */
-    public function getMessage(): string
+    public function getMessage()
     {
         return $this->message;
     }
@@ -61,7 +61,7 @@ class Message
      * @param string $message
      * @return Message
      */
-    public function setMessage(string $message): Message
+    public function setMessage($message)
     {
         $this->message = $message;
         return $this;
@@ -70,7 +70,7 @@ class Message
     /**
      * @return Job
      */
-    public function getJob(): Job
+    public function getJob()
     {
         return $this->job;
     }
@@ -79,7 +79,7 @@ class Message
      * @param Job $job
      * @return Message
      */
-    public function setJob(Job $job): Message
+    public function setJob(Job $job)
     {
         $this->job = $job;
         return $this;

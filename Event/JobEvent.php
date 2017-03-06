@@ -31,7 +31,7 @@ class JobEvent extends Event
     /**
      * @return array
      */
-    public function getJobMessages(): array
+    public function getJobMessages()
     {
         return $this->jobMessages;
     }

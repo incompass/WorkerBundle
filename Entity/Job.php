@@ -93,7 +93,7 @@ class Job
     /**
      * @return mixed
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -101,7 +101,7 @@ class Job
     /**
      * @return string
      */
-    public function getEvent(): string
+    public function getEvent()
     {
         return $this->event;
     }
@@ -110,7 +110,7 @@ class Job
      * @param string $event
      * @return Job
      */
-    public function setEvent(string $event): Job
+    public function setEvent($event)
     {
         $this->event = $event;
 
@@ -120,7 +120,7 @@ class Job
     /**
      * @return string
      */
-    public function getData(): string
+    public function getData()
     {
         return $this->data;
     }
@@ -129,7 +129,7 @@ class Job
      * @param string $data
      * @return Job
      */
-    public function setData(string $data): Job
+    public function setData($data)
     {
         $this->data = $data;
 
@@ -139,25 +139,15 @@ class Job
     /**
      * @return int
      */
-    public function getTries(): int
+    public function getTries()
     {
         return $this->tries;
     }
 
     /**
-     * @return Job
-     */
-    protected function try(): Job
-    {
-        $this->tries++;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -166,7 +156,7 @@ class Job
      * @param string $status
      * @return Job
      */
-    public function setStatus(string $status): Job
+    public function setStatus($status)
     {
         $this->status = $status;
 
@@ -198,7 +188,7 @@ class Job
     public function start()
     {
         $this->setStatus(Job::STATE_PROCESSING);
-        $this->try();
+        $this->tries++;
         $this->lastStarted = new DateTime();
         $this->lastFinished = null;
     }
@@ -233,7 +223,7 @@ class Job
      * @param bool $deleteOnFinish
      * @return Job
      */
-    public function setDeleteOnFinish(bool $deleteOnFinish): Job
+    public function setDeleteOnFinish($deleteOnFinish)
     {
         $this->deleteOnFinish = $deleteOnFinish;
 
@@ -243,7 +233,7 @@ class Job
     /**
      * @return bool
      */
-    public function isDeleteOnFinish(): bool
+    public function isDeleteOnFinish()
     {
         return $this->deleteOnFinish;
     }
